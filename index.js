@@ -13,7 +13,7 @@ var express = require('express'),
 //   {_id: 0, word: "sql", definition: "A special-purpose programming language designed for managing data held in a RDBMS."},
 //   {_id: 1, word: "schema", definition: "Similar to an object constructor, this thingie is a diagram or blueprint for what every object in the noSQL database will contain."},
 //   {_id: 2, word: "model", definition: "This thingie is a Schema that has been 'activated' with real data and is performing actions such as reading, saving, updating, etc."},
-//   {_id: 3, word: "node.js", definition: "a tool to run JavaScript outside the browser, directly on your OS."},
+// 	  {_id: 3, word: "node.js", definition: "a tool to run JavaScript outside the browser, directly on your OS."},
 //   {_id: 4, word: "rest", definition: "this acronym is a software architectural style for building scalable and performant web services."}
 // ];
 
@@ -44,13 +44,12 @@ app.get('/phrases', function (req, res){
     })
 
 });
-
+//posting new phrases to db
 app.post('/phrases', function create(req, res){
-	console.log(req.body);
+	//console.log(req.body);
 	var newPhrase = {word:req.body.word, definition:req.body.definition};
 //	phrases.push(newPhrase);
 //	res.redirect('/phrases');
-
 	db.Phrase.create(newPhrase, function(err, success){
 		if (err) {
 			console.log("newPhrase failed");
@@ -61,8 +60,31 @@ app.post('/phrases', function create(req, res){
 		}
 	})
 });
+//deleting phrase
+app.delete("/phrases/:id", function destroy(req, res){
+	//setting value of id
+
+// 	var targetId = parseInt(req.params._id);
+// 	//find item in db with matching id 
+// 	var targetItem = _.findWhere(db.Phrase, {id: targetId});
+// 	//get index of found item
+// 	var index = phrases.indexOf(targetItem);
+// 	//remove the item at that index, only remove 1 item
+// 	phrases.splice(index, 1);
+// 	//render deleted object
+// 	res.send(JSON.stringify(targetItem));
+// });
+ console.log(req);
+  db.Phrase.remove( id, function(err, phrase){
+    if (err) {
+      console.log(err);
+      return res.sendStatus(400);
+    }
+    res.sendStatus(200);
+  });
+});
 
 // start the server
 app.listen(3333, function () {
     console.log("Go to localhost:3333/");
-});
+})
