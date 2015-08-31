@@ -35,7 +35,7 @@ function renderPhrases(phrases) {
   template = _.template($("#phrases-template").html());
   // input phrases into template and append to parent
   phraseItems = phrases.map(function(phrase) {
-    return template({_id:phrase._id, word: phrase.word, definition: phrase.definition});
+    return template({_id: phrase._id, word: phrase.word, definition: phrase.definition});
   });
   // clear content (for repeated use)
   $("#phrase-ul").html("");
