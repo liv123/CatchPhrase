@@ -1,4 +1,8 @@
+var db = require('./models');
+
 // DATA //
+
+
 var phrases =[
   {_id: 0, word: "sql", definition: "A special-purpose programming language designed for managing data held in a RDBMS."},
   {_id: 1, word: "schema", definition: "Similar to an object constructor, this thingie is a diagram or blueprint for what every object in the noSQL database will contain."},

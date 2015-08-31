@@ -22,17 +22,15 @@ var phrases =[
 app.use('/static', express.static('public'));
 app.use('/vendor', express.static('bower_components'));
 //body parser config to accept all data types
-//app.use(bodyParser.urlencoded({ extend: true}));
+//app.use(body_parser.urlencoded({ extend: true}));
 
 //routes//
-
-
 
 // a "GET" request to "/" will run the function below//
 app.get("/", function (req, res) {
     // send back the response: 'Hello World'
-    res.send("Hello World");
     res.sendFile(path.join(views + 'index.html'));
+
 });
 
 app.get('/phrases', function (req, res){
