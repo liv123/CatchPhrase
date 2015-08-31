@@ -34,8 +34,29 @@ app.get("/", function (req, res) {
 });
 
 app.get('/phrases', function (req, res){
-	res.send(phrases);	
-}),
+	res.send(phrases);
+	// db.Phrase.find({}, function(err, phrasesList){
+ //        if (err) {
+ //            console.log("BAD THING!");
+ //            return res.sendStatus(400);
+ //        }
+ //        res.send(phrasesList);
+ //    })
+
+});
+
+app.post('phrases', function create(req, res){
+	var newPhrase = req.body;
+	db.Phrase.create(newPhrase, function(err, success){
+		if (err) {
+			console.log("newPhrase failed");
+			return res.sendStatus(400);
+		}
+		else {
+			res.send(success);
+		}
+	})
+});
 
 // start the server
 app.listen(3333, function () {

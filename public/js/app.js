@@ -43,14 +43,14 @@ function renderPhrases(phrases) {
   $("#phrase-ul").append(phraseItems);
 }
 
-// function deletePhrase(context) {
-//   var phraseId = $(context).data()._id;
-//   $.ajax({
-//     url: '/phrases/' + phraseId,
-//     type: 'DELETE',
-//     success: function(res) {
-//       // once successfull, re-render all phrases
-//       getPhrases();
-//     }
-//   });
-// }
+function deletePhrase(context) {
+  var phraseId = $(context).data()._id;
+  $.ajax({
+    url: '/phrases/' + phraseId,
+    type: 'DELETE',
+    success: function(res) {
+      // once successfull, re-render all phrases
+      getPhrases();
+    }
+  });
+}
