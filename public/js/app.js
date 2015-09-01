@@ -44,7 +44,8 @@ function renderPhrases(phrases) {
 }
 
 function deletePhrase(context) {
-  var phraseId = $(context).data()._id;
+  // var phraseId = $(context).data()._id;)
+  var phraseId = $(context).attr('data_id');
   $.ajax({
     url: '/phrases/' + phraseId,
     type: 'DELETE',

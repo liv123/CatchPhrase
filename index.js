@@ -74,8 +74,9 @@ app.delete("/phrases/:id", function destroy(req, res){
 // 	//render deleted object
 // 	res.send(JSON.stringify(targetItem));
 // });
- console.log(req);
-  db.Phrase.remove( id, function(err, phrase){
+ var id = req.params.id;
+ console.log(id);
+  db.Phrase.findByIdAndRemove(id, function (err){
     if (err) {
       console.log(err);
       return res.sendStatus(400);
